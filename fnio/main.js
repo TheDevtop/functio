@@ -1,7 +1,36 @@
 /*
-    Functio: Functions and automation platform
-    Program entrypoint and startup
+    Functio: Program entrypoint and startup
     Thijs Haker
 */
 
-console.info("Starting Functio...");
+const server = require("./server");
+const sched = require("./sched");
+const store = require("./store");
+
+// Print the banner
+
+const banner = `
+░█▀▀░█▀█░▄▀░░▀█▀░█▀█░▀▄░
+░█▀▀░█░█░█░░░░█░░█░█░░█░
+░▀░░░▀░▀░░▀░░▀▀▀░▀▀▀░▀░░
+`;
+
+console.log(banner);
+
+// Start subsystems
+
+store.startStore(process.env.DATA_DIR);
+server.startServer(process.env.PORT);
+
+// Define the stop function
+const halt = (sig) => {
+    store.stopStore();
+    server.stopServer();
+
+    console.warn("Halted on:", sig);
+    process.exit(0);
+};
+
+// Wait for stop signals
+process.on('SIGTERM', () => halt('SIGTERM'));
+process.on('SIGINT', () => halt('SIGINT'));

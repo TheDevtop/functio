@@ -1,0 +1,24 @@
+{
+  "name": "functio",
+  "version": "0.0.0",
+  "description": "Functions and automation platform",
+  "repository": {
+    "type": "git",
+    "url": "github.com/TheDevtop/functio"
+  },
+  "license": "MIT",
+  "author": "Thijs Haker",
+  "type": "commonjs",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "dependencies": {
+    "bree": "^9.2.9",
+    "classic-level": "^3.0.0",
+    "express": "^5.2.1"
+  },
+  "allowScripts": {
+    "classic-level@3.0.0": true
+  }
+}

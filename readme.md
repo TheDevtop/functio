@@ -1,3 +1,3 @@
-# Functio
+# Fn(io)
 
-A functions and automation platform written in JavaScript.
+**Functio** is a functions and automation platform written in JavaScript.

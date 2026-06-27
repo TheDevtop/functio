@@ -24,8 +24,8 @@ server.startServer(process.env.PORT);
 
 // Define the stop function
 const halt = (sig) => {
-    store.stopStore();
     server.stopServer();
+    store.stopStore();
 
     console.warn("Halted on:", sig);
     process.exit(0);

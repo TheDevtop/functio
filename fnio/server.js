@@ -4,18 +4,22 @@
 */
 
 const express = require('express');
-const srv = express();
 
-srv.get('/', (req, res) => {
+const appRouter = express();
+var srv;
+
+appRouter.get('/', (req, res) => {
   res.send('Fn(io)');
 });
 
+
 exports.startServer = (port) => {
-    srv.listen(port, () => {
+    srv = appRouter.listen(port, () => {
         console.info("Started server on port:", port)
     });
 };
 
 exports.stopServer = () => {
+    srv.close();
     console.info("Stopped server");
 };

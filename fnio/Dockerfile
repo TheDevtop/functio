@@ -6,7 +6,7 @@ RUN npm ci
 EXPOSE 8069
 
 # Put default values here
-ENV PORT=8096
+ENV PORT=8069
 ENV DATA_DIR=/data
 
 CMD [ "npm", "start" ]

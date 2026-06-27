@@ -8,6 +8,7 @@ EXPOSE 8069
 # Put default values here
 ENV PORT=8069
 ENV DATA_DIR=/data
+ENV RESTART=true
 
 CMD [ "npm", "start" ]
 LABEL org.opencontainers.image.source="https://github.com/TheDevtop/functio"

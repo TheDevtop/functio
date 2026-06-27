@@ -18,13 +18,14 @@ const banner = `
 console.log(banner);
 
 // Start subsystems
-
 store.startStore(process.env.DATA_DIR);
+sched.startSched(Boolean(process.env.RESTART));
 server.startServer(process.env.PORT);
 
 // Define the stop function
 const halt = (sig) => {
     server.stopServer();
+    sched.stopSched();
     store.stopStore();
 
     console.warn("Halted on:", sig);

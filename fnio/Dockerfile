@@ -10,3 +10,4 @@ ENV PORT=8069
 ENV DATA_DIR=/data
 
 CMD [ "npm", "start" ]
+LABEL org.opencontainers.image.source="https://github.com/TheDevtop/functio"

@@ -19,7 +19,7 @@ console.log(banner);
 
 // Start subsystems
 store.startStore(process.env.DATA_DIR);
-sched.startSched(Boolean(process.env.RESTART));
+sched.startSched(process.env.MODS_DIR, Boolean(process.env.RESTART));
 server.startServer(process.env.PORT);
 
 // Define the stop function

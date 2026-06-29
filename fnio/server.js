@@ -16,14 +16,21 @@ appRouter.get('/health', (req, res) => {
 });
 
 appRouter.post('/', (req, res) => {
-    let result = null;
+    let cmd, args = null;
     if (req.body.length > 1) {
-        const args = req.body.slice(1);
-        result = await sched.execNow(req.body[0], ...args);
+        cmd = req.body[0];
+        args = req.body.slice(1);
     } else {
-        result = await sched.execNow(req.body[0]);
+        cmd = req.body[0];
+        args = [];
     }
-    res.json(result);
+
+    sched.exec(cmd, ...args).then(result => {
+        res.send(result);
+    }).catch(err => {
+        console.error("Could not resolve promise:", err);
+        res.send(err);
+    });
 });
 
 exports.startServer = (port) => {

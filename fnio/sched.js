@@ -52,7 +52,7 @@ exports.stopSched = () => {
 };
 
 // Get module 
-exports.execNow = async (cmd, ...args) => {
+exports.exec = async (cmd, ...args) => {
     const defErr = `Command not found: ${cmd}`;
     let result = "";
 
